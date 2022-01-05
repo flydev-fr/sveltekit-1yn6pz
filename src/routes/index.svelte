@@ -22,7 +22,7 @@ const coConf = {
 const option = { url: coConf.roomUrl };
 
 // Create instance of Daily call object
-const co = daily.createCallObject(option);
+const co = DailyIframe.createCallObject(option);
 // Assign in data obj for future reference
 this.callObject = co;
 
