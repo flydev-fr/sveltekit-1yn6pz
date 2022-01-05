@@ -6,6 +6,7 @@ import DailyIframe from '@daily-co/daily-js'
 onMount(async () => {
   
   console.log("conf of co");
+  
 const coConf = {
   callObject: null,
   participants: null,
