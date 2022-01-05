@@ -4,12 +4,7 @@ import DailyIframe from '@daily-co/daily-js'
 
 
 onMount(async () => {
-  let callObject = DailyIframe.createFrame();
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-  let recorder = new MediaRecorder(stream)
-  recorder.start()
-})
-
+  
 const coConf = {
   callObject: null,
   participants: null,
@@ -43,6 +38,15 @@ co.on("joining-meeting", coConf.handleJoiningMeeting)
   .on("camera-error", coConf.handleDeviceError)
   // app-message handles receiving remote chat messages
   .on("app-message", coConf.updateMessages);
+
+  let callObject = DailyIframe.createFrame();
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+  let recorder = new MediaRecorder(stream)
+  recorder.start()
+
+console.log(co)
+})
+
 </script>
 
 <h1>Welcome to SvelteKit</h1>
