@@ -9,6 +9,40 @@ onMount(async () => {
   let recorder = new MediaRecorder(stream)
   recorder.start()
 })
+
+const coConf = {
+  callObject: null,
+  participants: null,
+  count: 0,
+  messages: [],
+  error: false,
+  loading: false,
+  showPermissionsError: false,
+  screen: null,
+};
+
+const option = { url: this.roomUrl };
+
+// Create instance of Daily call object
+const co = daily.createCallObject(option);
+// Assign in data obj for future reference
+this.callObject = co;
+
+// Join the call with the name set in the Home.vue form
+co.join({ userName: this.name });
+
+// Add call and participant event handler
+// Visit https://docs.daily.co/reference/daily-js/events for more event info
+co.on("joining-meeting", coConf.handleJoiningMeeting)
+  .on("joined-meeting", coConf.updateParticpants)
+  .on("participant-joined", coConf.updateParticpants)
+  .on("participant-updated", coConf.updateParticpants)
+  .on("participant-left", coConf.updateParticpants)
+  .on("error", coConf.handleError)
+  // camera-error = device permissions issue
+  .on("camera-error", coConf.handleDeviceError)
+  // app-message handles receiving remote chat messages
+  .on("app-message", coConf.updateMessages);
 </script>
 
 <h1>Welcome to SvelteKit</h1>
