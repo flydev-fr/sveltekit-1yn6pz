@@ -16,18 +16,17 @@ const coConf = {
   loading: false,
   showPermissionsError: false,
   screen: null,
-  roomUrl: "https://api-demo.daily.co/V3SFUw4EMK08W5UkKWcx"
+  roomUrl: "https://api-demo.daily.co/V3SFUw4EMK08W5UkKWcx",
+  name: "foobar"
 };
 
 const option = { url: coConf.roomUrl };
 
 // Create instance of Daily call object
 const co = DailyIframe.createCallObject(option);
-// Assign in data obj for future reference
-this.callObject = co;
 
 // Join the call with the name set in the Home.vue form
-co.join({ userName: this.name });
+co.join({ userName: coConf.name });
 
 // Add call and participant event handler
 // Visit https://docs.daily.co/reference/daily-js/events for more event info
