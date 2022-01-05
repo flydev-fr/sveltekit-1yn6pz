@@ -15,9 +15,10 @@ const coConf = {
   loading: false,
   showPermissionsError: false,
   screen: null,
+  roomUrl: "https://api-demo.daily.co/V3SFUw4EMK08W5UkKWcx"
 };
 
-const option = { url: this.roomUrl };
+const option = { url: coConf.roomUrl };
 
 // Create instance of Daily call object
 const co = daily.createCallObject(option);
